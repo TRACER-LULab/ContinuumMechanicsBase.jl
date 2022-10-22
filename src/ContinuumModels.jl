@@ -73,6 +73,6 @@ const I2 = I₂
 const I3 = I₃
 
 ## Precompile
-using SnoopPrecompile
+# using SnoopPrecompile
 
 end
