@@ -3,6 +3,11 @@ uuid = "3a778109-d974-46c8-ac54-09f30d605bdf"
 authors = ["Carson Farmer and Hector Medina"]
 version = "0.1.0"
 
+[deps]
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+SnoopPrecompile = "66db9d55-30c0-4569-8b51-7e840670fc0c"
+Tensors = "48a634ad-e948-5137-8d70-aa71f2a747f4"
+
 [compat]
 julia = "1"
 
