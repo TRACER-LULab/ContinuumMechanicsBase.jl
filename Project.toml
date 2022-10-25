@@ -1,4 +1,4 @@
-name = "ContinuumModels"
+name = "NonlinearContinua"
 uuid = "3a778109-d974-46c8-ac54-09f30d605bdf"
 authors = ["Carson Farmer and Hector Medina"]
 version = "0.1.0"
