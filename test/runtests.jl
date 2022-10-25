@@ -1,6 +1,6 @@
-using ContinuumModels
+using NonlinearContinua
 using Test
 
-@testset "ContinuumModels.jl" begin
+@testset "NonlinearContinua.jl" begin
     # Write your tests here.
 end

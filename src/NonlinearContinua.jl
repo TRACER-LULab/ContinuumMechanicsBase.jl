@@ -1,4 +1,4 @@
-module ContinuumModels
+module NonlinearContinua
 
 import Tensors.AbstractTensor
 using LinearAlgebra
