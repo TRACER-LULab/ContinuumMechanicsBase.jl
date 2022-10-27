@@ -1,18 +1,44 @@
 module NonlinearContinua
 
-import Tensors.AbstractTensor
 using LinearAlgebra
+using Accessors
 
 abstract type AbstractMaterialModel end
 abstract type AbstractMaterialState end
 
 export I₁, I₂, I₃, I1, I2, I3, J
+export MaterialHistory
+
+## Material Properties
+export MaterialHistory, update_history, update_history!
+struct MaterialHistory{T,S} <: AbstractMaterialState
+    value::Vector{T}
+    time::Vector{S}
+    function MaterialHistory(values, times)
+        new{eltype(values),eltype(times)}(values, times)
+    end
+end
+value(history::MaterialHistory) = history.value
+time(history::MaterialHistory) = history.time
+
+function update_history!(history::MaterialHistory, value, time)
+    @set history.value = push!(history.value, value)
+    @set history.time = push!(history.time, time)
+    return nothing
+end
+
+function update_history(history::MaterialHistory, value, time)
+    history = @set history.value = vcat(history.value, [value])
+    history = @set history.time = vcat(history.time, [time])
+    return history
+end
+
 ## Energy Models
 for Model ∈ [
     :StrainEnergyDensity
-    ]
-    @eval @inline function $Model(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
+]
     @eval export $Model
+    @eval @inline function $Model(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
 end
 ## Stress Tensors
 for Tensor ∈ [
@@ -20,9 +46,8 @@ for Tensor ∈ [
     :SecondPiolaKirchoffStressTensor,
     :CauchyStressTensor
 ]
-    # @eval struct $Tensor{order,dim,T<:Number} <: AbstractTensor{order,dim,T} end
-    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
     @eval export $Tensor
+    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
 end
 
 ## Deformation Tensors
@@ -33,9 +58,8 @@ for Tensor ∈ [
     :LeftCauchyGreenDeformationTensor,
     :InverseLeftCauchyGreenDeformationTensor
 ]
-    # @eval struct $Tensor{order,dim,T<:Number} <: AbstractTensor{order,dim,T} end
-    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
     @eval export $Tensor
+    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
 end
 
 
@@ -44,9 +68,8 @@ for Tensor ∈ [
     :GreenStrainTensor,
     :AlmansiStrainTensor
 ]
-    # @eval struct $Tensor{order,dim,T<:Number} <: AbstractTensor{order,dim,T} end
-    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
     @eval export $Tensor
+    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
 end
 
 ## Time Dependent Tensors
@@ -54,9 +77,8 @@ end
 for Tensor ∈ [
     :VelocityGradientTensor
 ]
-    # @eval struct $Tensor{order,dim,T<:Number} <: AbstractTensor{order,dim,T} end
-    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
     @eval export $Tensor
+    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
 end
 
 ## Electric Field Tensors
@@ -65,7 +87,7 @@ end
 
 ## Tensor Invariant Calculations
 I₁(T::AbstractMatrix) = tr(T)
-I₂(T::AbstractMatrix) = 1/2*(tr(T) - tr(T^2))
+I₂(T::AbstractMatrix) = 1 / 2 * (tr(T) - tr(T^2))
 I₃(T::AbstractMatrix) = det(T)
 J(T::AbstractMatrix) = sqrt(det(T))
 const I1 = I₁
