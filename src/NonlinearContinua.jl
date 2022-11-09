@@ -5,6 +5,7 @@ using Accessors
 
 abstract type AbstractMaterialModel end
 abstract type AbstractMaterialState end
+abstract type AbstractMaterialTest end
 
 export I₁, I₂, I₃, I1, I2, I3, J
 export MaterialHistory
@@ -35,7 +36,8 @@ end
 
 ## Energy Models
 for Model ∈ [
-    :StrainEnergyDensity
+    :StrainEnergyDensity,
+    :StrainEnergyDensity!,
 ]
     @eval export $Model
     @eval @inline function $Model(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
@@ -44,7 +46,10 @@ end
 for Tensor ∈ [
     :FirstPiolaKirchoffStressTensor,
     :SecondPiolaKirchoffStressTensor,
-    :CauchyStressTensor
+    :CauchyStressTensor,
+    :FirstPiolaKirchoffStressTensor!,
+    :SecondPiolaKirchoffStressTensor!,
+    :CauchyStressTensor!,
 ]
     @eval export $Tensor
     @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
@@ -56,7 +61,12 @@ for Tensor ∈ [
     :InverseDeformationGradientTensor,
     :RightCauchyGreenDeformationTensor,
     :LeftCauchyGreenDeformationTensor,
-    :InverseLeftCauchyGreenDeformationTensor
+    :InverseLeftCauchyGreenDeformationTensor,
+    :DeformationGradientTensor!,
+    :InverseDeformationGradientTensor!,
+    :RightCauchyGreenDeformationTensor!,
+    :LeftCauchyGreenDeformationTensor!,
+    :InverseLeftCauchyGreenDeformationTensor!,
 ]
     @eval export $Tensor
     @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
@@ -66,7 +76,9 @@ end
 ## Strain Tensors
 for Tensor ∈ [
     :GreenStrainTensor,
-    :AlmansiStrainTensor
+    :AlmansiStrainTensor,
+    :GreenStrainTensor!,
+    :AlmansiStrainTensor!,
 ]
     @eval export $Tensor
     @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
@@ -75,7 +87,8 @@ end
 ## Time Dependent Tensors
 # Deformation
 for Tensor ∈ [
-    :VelocityGradientTensor
+    :VelocityGradientTensor,
+    :VelocityGradientTensor!,
 ]
     @eval export $Tensor
     @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
@@ -87,7 +100,7 @@ end
 
 ## Tensor Invariant Calculations
 I₁(T::AbstractMatrix) = tr(T)
-I₂(T::AbstractMatrix) = 1 / 2 * (tr(T) - tr(T^2))
+I₂(T::AbstractMatrix) = 1 / 2 * (tr(T)^2 - tr(T^2))
 I₃(T::AbstractMatrix) = det(T)
 J(T::AbstractMatrix) = sqrt(det(T))
 const I1 = I₁
