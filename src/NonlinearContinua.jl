@@ -10,6 +10,14 @@ abstract type AbstractMaterialTest end
 export I₁, I₂, I₃, I1, I2, I3, J
 export MaterialHistory
 
+## Material Tests
+"""
+Predicts the model behavior for provided experimental test.
+"""
+function predict(ψ::AbstractMaterialModel, test::AbstractMaterialTest, ps)
+    @error "Method not implemented for model $(typeof(ψ)) and test $(typeof(test))"
+end
+
 ## Material Properties
 export MaterialHistory, update_history, update_history!
 struct MaterialHistory{T,S} <: AbstractMaterialState
@@ -23,8 +31,8 @@ value(history::MaterialHistory) = history.value
 time(history::MaterialHistory) = history.time
 
 function update_history!(history::MaterialHistory, value, time)
-    @set history.value = push!(history.value, value)
-    @set history.time = push!(history.time, time)
+    push!(history.value, value)
+    push!(history.time, time)
     return nothing
 end
 
