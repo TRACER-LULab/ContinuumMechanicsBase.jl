@@ -17,6 +17,11 @@ Predicts the model behavior for provided experimental test.
 function predict(ψ::AbstractMaterialModel, test::AbstractMaterialTest, ps)
     @error "Method not implemented for model $(typeof(ψ)) and test $(typeof(test))"
 end
+function predict(ψ::AbstractMaterialModel, tests::Vector{<:AbstractMaterialTest}, ps)
+    f(test) = predict(ψ, test, ps)
+    results = map(f, tests)
+    return results
+end
 
 ## Material Properties
 export MaterialHistory, update_history, update_history!
