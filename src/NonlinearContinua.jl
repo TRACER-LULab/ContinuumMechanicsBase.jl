@@ -22,7 +22,7 @@ function predict(ψ::AbstractMaterialModel, tests::Vector{<:AbstractMaterialTest
     results = map(f, tests)
     return results
 end
-
+export predict
 ## Material Properties
 export MaterialHistory, update_history, update_history!
 struct MaterialHistory{T,S} <: AbstractMaterialState
