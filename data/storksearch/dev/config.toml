@@ -115,8 +115,8 @@ url_prefix = ""
     contents = "SecondPiolaKirchoffStressTensor!"
     url = "NonlinearContinua@dev/ref/NonlinearContinua.SecondPiolaKirchoffStressTensor!"
     [[input.files]]
-    title = "ContinuumModels"
-    contents = "ContinuumModels\n\n"
+    title = "Nonlinear Continua"
+    contents = "Nonlinear Continua\nThis is a meta-package for all child packages dealing with nonlinear continuum scale models. This allows for reuse among packages of the same tensor names and defines a common interface between packages.\n\n"
     url = "NonlinearContinua@dev/doc/README.md"
     [[input.files]]
     title = "GreenStrainTensor"
