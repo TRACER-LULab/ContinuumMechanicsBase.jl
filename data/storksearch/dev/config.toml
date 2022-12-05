@@ -100,7 +100,7 @@ url_prefix = ""
     url = "NonlinearContinua@dev/ref/NonlinearContinua.time"
     [[input.files]]
     title = "NonlinearContinua"
-    contents = "<<<<<<< HEAD\nNonlinearContinua\nNonlinearContinua.jl is the core interface for the definitions used in the TRACER Lab Continuum Modeling suite. This module defines a core interface between different energy domains and methods. The aim is to provide a standard interface for predicting material behavior.\nNonlinear Continua\nThis is a meta-package for all child packages dealing with nonlinear continuum scale models. This allows for reuse among packages of the same tensor names and defines a common interface between packages.\nb521a1f31c385d69aed2d255f821f87b0ad84d40\n\n\n\n\n\n\n\n\n"
+    contents = "NonlinearContinua\nNonlinearContinua.jl is the core interface for the definitions used in the TRACER Lab Continuum Model. This module defines a core interface between different energy domains and methods. The aim is to provide a standard interface for predicting material behavior.\n\n"
     url = "NonlinearContinua@dev/doc/README.md"
     [[input.files]]
     title = "LeftCauchyGreenDeformationTensor"
