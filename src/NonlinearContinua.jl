@@ -7,12 +7,18 @@ abstract type AbstractMaterialModel end
 abstract type AbstractMaterialState end
 abstract type AbstractMaterialTest end
 
-export I₁, I₂, I₃, I1, I2, I3, J
-export MaterialHistory
+export I₁, I₂, I₃, J
+export MaterialHistory, update_history, update_history!
+export predict
 
 ## Material Tests
 """
-Predicts the model behavior for provided experimental test.
+`predict(ψ::AbstractMaterialModel, test::AbstractMaterialTest, ps)`
+
+Fields:
+- `ψ`: Material Model
+- `test` or `tests`: A single test or vector of tests. This is used to predict the response of the model in comparison to the experimental data provided.
+- `ps`: Model parameters to be used.
 """
 function predict(ψ::AbstractMaterialModel, test::AbstractMaterialTest, ps)
     @error "Method not implemented for model $(typeof(ψ)) and test $(typeof(test))"
@@ -22,25 +28,39 @@ function predict(ψ::AbstractMaterialModel, tests::Vector{<:AbstractMaterialTest
     results = map(f, tests)
     return results
 end
-export predict
-## Material Properties
-export MaterialHistory, update_history, update_history!
+
+"""
+`MaterialHistory(values::Vector, times::Vector)`
+
+Structure for storing the behavior of a material as it evolves in time. Design to be used in time-dependent models such as viscoelasticity.
+
+"""
 struct MaterialHistory{T,S} <: AbstractMaterialState
     value::Vector{T}
     time::Vector{S}
-    function MaterialHistory(values, times)
+    function MaterialHistory(values::Vector, times::Vector)
         new{eltype(values),eltype(times)}(values, times)
     end
 end
 value(history::MaterialHistory) = history.value
 time(history::MaterialHistory) = history.time
 
+"""
+`update_history!(history::MaterialHistory, value, time)`
+
+Update the material history with the provided time an value.
+"""
 function update_history!(history::MaterialHistory, value, time)
     push!(history.value, value)
     push!(history.time, time)
     return nothing
 end
 
+"""
+`update_history(history::MaterialHistory, value, time)`
+
+Update the material history with the provided time an value.
+"""
 function update_history(history::MaterialHistory, value, time)
     history = @set history.value = vcat(history.value, [value])
     history = @set history.time = vcat(history.time, [time])
@@ -116,11 +136,5 @@ I₁(T::AbstractMatrix) = tr(T)
 I₂(T::AbstractMatrix) = 1 / 2 * (tr(T)^2 - tr(T^2))
 I₃(T::AbstractMatrix) = det(T)
 J(T::AbstractMatrix) = sqrt(det(T))
-const I1 = I₁
-const I2 = I₂
-const I3 = I₃
-
-## Precompile
-# using SnoopPrecompile
 
 end
