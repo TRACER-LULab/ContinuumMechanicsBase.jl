@@ -3,129 +3,9 @@ base_directory = "."
 url_prefix = ""
 
     [[input.files]]
-    title = "InverseDeformationGradientTensor"
-    contents = "InverseDeformationGradientTensor"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.InverseDeformationGradientTensor"
-    [[input.files]]
-    title = "RightCauchyGreenDeformationTensor"
-    contents = "RightCauchyGreenDeformationTensor"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.RightCauchyGreenDeformationTensor"
-    [[input.files]]
-    title = "update_history"
-    contents = "update_history"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.update_history"
-    [[input.files]]
-    title = "I₃"
-    contents = "I₃"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.I₃"
-    [[input.files]]
-    title = "MaterialHistory"
-    contents = "MaterialHistory"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.MaterialHistory"
-    [[input.files]]
-    title = "StrainEnergyDensity!"
-    contents = "StrainEnergyDensity!"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.StrainEnergyDensity!"
-    [[input.files]]
-    title = "AlmansiStrainTensor"
-    contents = "AlmansiStrainTensor"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.AlmansiStrainTensor"
-    [[input.files]]
-    title = "NonlinearContinua/NonlinearContinua.jl"
-    contents = "NonlinearContinua LinearAlgebra Accessors ψ test ps typeof ψ typeof test ψ tests Vector ps f test ψ test ps results map f tests results T S Vector T Vector S values times new eltype values eltype times values times history history history history history push! history push! history nothing history history history vcat history history history vcat history history Model Model Model M S P Tensor Tensor Tensor M S P Tensor Tensor Tensor M S P Tensor Tensor Tensor M S P Tensor Tensor Tensor M S P T AbstractMatrix tr T T AbstractMatrix tr T tr T T AbstractMatrix det T T AbstractMatrix sqrt det T \n"
-    url = "NonlinearContinua@dev/src/NonlinearContinua.jl"
-    [[input.files]]
-    title = "AbstractMaterialModel"
-    contents = "AbstractMaterialModel"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.AbstractMaterialModel"
-    [[input.files]]
-    title = "time"
-    contents = "time"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.time"
-    [[input.files]]
-    title = "InverseLeftCauchyGreenDeformationTensor"
-    contents = "InverseLeftCauchyGreenDeformationTensor"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.InverseLeftCauchyGreenDeformationTensor"
-    [[input.files]]
-    title = "I₂"
-    contents = "I₂"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.I₂"
-    [[input.files]]
-    title = "StrainEnergyDensity"
-    contents = "StrainEnergyDensity"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.StrainEnergyDensity"
-    [[input.files]]
-    title = "FirstPiolaKirchoffStressTensor!"
-    contents = "FirstPiolaKirchoffStressTensor!"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.FirstPiolaKirchoffStressTensor!"
-    [[input.files]]
-    title = "FirstPiolaKirchoffStressTensor"
-    contents = "FirstPiolaKirchoffStressTensor"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.FirstPiolaKirchoffStressTensor"
-    [[input.files]]
-    title = "predict"
-    contents = "Predicts the model behavior for provided experimental test.\n\n"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.predict"
-    [[input.files]]
-    title = "I3"
-    contents = "I3"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.I3"
-    [[input.files]]
-    title = "SecondPiolaKirchoffStressTensor"
-    contents = "SecondPiolaKirchoffStressTensor"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.SecondPiolaKirchoffStressTensor"
-    [[input.files]]
-    title = "LeftCauchyGreenDeformationTensor!"
-    contents = "LeftCauchyGreenDeformationTensor!"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.LeftCauchyGreenDeformationTensor!"
-    [[input.files]]
-    title = "CauchyStressTensor"
-    contents = "CauchyStressTensor"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.CauchyStressTensor"
-    [[input.files]]
-    title = "DeformationGradientTensor"
-    contents = "DeformationGradientTensor"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.DeformationGradientTensor"
-    [[input.files]]
-    title = "RightCauchyGreenDeformationTensor!"
-    contents = "RightCauchyGreenDeformationTensor!"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.RightCauchyGreenDeformationTensor!"
-    [[input.files]]
-    title = "AbstractMaterialTest"
-    contents = "AbstractMaterialTest"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.AbstractMaterialTest"
-    [[input.files]]
-    title = "InverseDeformationGradientTensor!"
-    contents = "InverseDeformationGradientTensor!"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.InverseDeformationGradientTensor!"
-    [[input.files]]
     title = "AbstractMaterialState"
     contents = "AbstractMaterialState"
     url = "NonlinearContinua@dev/ref/NonlinearContinua.AbstractMaterialState"
-    [[input.files]]
-    title = "value"
-    contents = "value"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.value"
-    [[input.files]]
-    title = "InverseLeftCauchyGreenDeformationTensor!"
-    contents = "InverseLeftCauchyGreenDeformationTensor!"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.InverseLeftCauchyGreenDeformationTensor!"
-    [[input.files]]
-    title = "SecondPiolaKirchoffStressTensor!"
-    contents = "SecondPiolaKirchoffStressTensor!"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.SecondPiolaKirchoffStressTensor!"
-    [[input.files]]
-    title = "Nonlinear Continua"
-    contents = "Nonlinear Continua\nThis is a meta-package for all child packages dealing with nonlinear continuum scale models. This allows for reuse among packages of the same tensor names and defines a common interface between packages.\n\n"
-    url = "NonlinearContinua@dev/doc/README.md"
-    [[input.files]]
-    title = "GreenStrainTensor"
-    contents = "GreenStrainTensor"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.GreenStrainTensor"
-    [[input.files]]
-    title = "CauchyStressTensor!"
-    contents = "CauchyStressTensor!"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.CauchyStressTensor!"
     [[input.files]]
     title = "NonlinearContinua"
     contents = "NonlinearContinua"
@@ -135,32 +15,108 @@ url_prefix = ""
     contents = "AlmansiStrainTensor!"
     url = "NonlinearContinua@dev/ref/NonlinearContinua.AlmansiStrainTensor!"
     [[input.files]]
+    title = "InverseDeformationGradientTensor"
+    contents = "InverseDeformationGradientTensor"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.InverseDeformationGradientTensor"
+    [[input.files]]
+    title = "RightCauchyGreenDeformationTensor"
+    contents = "RightCauchyGreenDeformationTensor"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.RightCauchyGreenDeformationTensor"
+    [[input.files]]
     title = "J"
     contents = "J"
     url = "NonlinearContinua@dev/ref/NonlinearContinua.J"
+    [[input.files]]
+    title = "SecondPiolaKirchoffStressTensor"
+    contents = "SecondPiolaKirchoffStressTensor"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.SecondPiolaKirchoffStressTensor"
+    [[input.files]]
+    title = "update_history"
+    contents = "update_history(history::MaterialHistory, value, time)\nUpdate the material history with the provided time an value.\n\n"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.update_history"
     [[input.files]]
     title = "VelocityGradientTensor!"
     contents = "VelocityGradientTensor!"
     url = "NonlinearContinua@dev/ref/NonlinearContinua.VelocityGradientTensor!"
     [[input.files]]
-    title = "I2"
-    contents = "I2"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.I2"
+    title = "I₃"
+    contents = "I₃"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.I₃"
+    [[input.files]]
+    title = "LeftCauchyGreenDeformationTensor!"
+    contents = "LeftCauchyGreenDeformationTensor!"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.LeftCauchyGreenDeformationTensor!"
+    [[input.files]]
+    title = "MaterialHistory"
+    contents = "MaterialHistory(values::Vector, times::Vector)\nStructure for storing the behavior of a material as it evolves in time. Design to be used in time-dependent models such as viscoelasticity.\n\n"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.MaterialHistory"
+    [[input.files]]
+    title = "StrainEnergyDensity!"
+    contents = "StrainEnergyDensity!"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.StrainEnergyDensity!"
+    [[input.files]]
+    title = "value"
+    contents = "value"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.value"
+    [[input.files]]
+    title = "CauchyStressTensor"
+    contents = "CauchyStressTensor"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.CauchyStressTensor"
+    [[input.files]]
+    title = "DeformationGradientTensor"
+    contents = "DeformationGradientTensor"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.DeformationGradientTensor"
+    [[input.files]]
+    title = "AlmansiStrainTensor"
+    contents = "AlmansiStrainTensor"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.AlmansiStrainTensor"
+    [[input.files]]
+    title = "RightCauchyGreenDeformationTensor!"
+    contents = "RightCauchyGreenDeformationTensor!"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.RightCauchyGreenDeformationTensor!"
+    [[input.files]]
+    title = "InverseLeftCauchyGreenDeformationTensor!"
+    contents = "InverseLeftCauchyGreenDeformationTensor!"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.InverseLeftCauchyGreenDeformationTensor!"
+    [[input.files]]
+    title = "NonlinearContinua/NonlinearContinua.jl"
+    contents = "NonlinearContinua LinearAlgebra Accessors ψ test ps typeof ψ typeof test ψ tests Vector ps f test ψ test ps results map f tests results T S Vector T Vector S values Vector times Vector new eltype values eltype times values times history history history history history push! history push! history nothing history history history vcat history history history vcat history history Model Model Model M S P Tensor Tensor Tensor M S P Tensor Tensor Tensor M S P Tensor Tensor Tensor M S P Tensor Tensor Tensor M S P T AbstractMatrix tr T T AbstractMatrix tr T tr T T AbstractMatrix det T T AbstractMatrix sqrt det T \n"
+    url = "NonlinearContinua@dev/src/NonlinearContinua.jl"
+    [[input.files]]
+    title = "SecondPiolaKirchoffStressTensor!"
+    contents = "SecondPiolaKirchoffStressTensor!"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.SecondPiolaKirchoffStressTensor!"
+    [[input.files]]
+    title = "AbstractMaterialModel"
+    contents = "AbstractMaterialModel"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.AbstractMaterialModel"
     [[input.files]]
     title = "VelocityGradientTensor"
     contents = "VelocityGradientTensor"
     url = "NonlinearContinua@dev/ref/NonlinearContinua.VelocityGradientTensor"
     [[input.files]]
-    title = "I1"
-    contents = "I1"
-    url = "NonlinearContinua@dev/ref/NonlinearContinua.I1"
+    title = "time"
+    contents = "time"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.time"
+    [[input.files]]
+    title = "NonlinearContinua"
+    contents = "<<<<<<< HEAD\nNonlinearContinua\nNonlinearContinua.jl is the core interface for the definitions used in the TRACER Lab Continuum Modeling suite. This module defines a core interface between different energy domains and methods. The aim is to provide a standard interface for predicting material behavior.\nNonlinear Continua\nThis is a meta-package for all child packages dealing with nonlinear continuum scale models. This allows for reuse among packages of the same tensor names and defines a common interface between packages.\nb521a1f31c385d69aed2d255f821f87b0ad84d40\n\n\n\n\n\n\n\n\n"
+    url = "NonlinearContinua@dev/doc/README.md"
     [[input.files]]
     title = "LeftCauchyGreenDeformationTensor"
     contents = "LeftCauchyGreenDeformationTensor"
     url = "NonlinearContinua@dev/ref/NonlinearContinua.LeftCauchyGreenDeformationTensor"
     [[input.files]]
+    title = "InverseLeftCauchyGreenDeformationTensor"
+    contents = "InverseLeftCauchyGreenDeformationTensor"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.InverseLeftCauchyGreenDeformationTensor"
+    [[input.files]]
+    title = "I₂"
+    contents = "I₂"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.I₂"
+    [[input.files]]
     title = "update_history!"
-    contents = "update_history!"
+    contents = "update_history!(history::MaterialHistory, value, time)\nUpdate the material history with the provided time an value.\n\n"
     url = "NonlinearContinua@dev/ref/NonlinearContinua.update_history!"
     [[input.files]]
     title = "GreenStrainTensor!"
@@ -171,6 +127,38 @@ url_prefix = ""
     contents = "DeformationGradientTensor!"
     url = "NonlinearContinua@dev/ref/NonlinearContinua.DeformationGradientTensor!"
     [[input.files]]
+    title = "FirstPiolaKirchoffStressTensor!"
+    contents = "FirstPiolaKirchoffStressTensor!"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.FirstPiolaKirchoffStressTensor!"
+    [[input.files]]
     title = "I₁"
     contents = "I₁"
     url = "NonlinearContinua@dev/ref/NonlinearContinua.I₁"
+    [[input.files]]
+    title = "StrainEnergyDensity"
+    contents = "StrainEnergyDensity"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.StrainEnergyDensity"
+    [[input.files]]
+    title = "GreenStrainTensor"
+    contents = "GreenStrainTensor"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.GreenStrainTensor"
+    [[input.files]]
+    title = "AbstractMaterialTest"
+    contents = "AbstractMaterialTest"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.AbstractMaterialTest"
+    [[input.files]]
+    title = "CauchyStressTensor!"
+    contents = "CauchyStressTensor!"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.CauchyStressTensor!"
+    [[input.files]]
+    title = "FirstPiolaKirchoffStressTensor"
+    contents = "FirstPiolaKirchoffStressTensor"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.FirstPiolaKirchoffStressTensor"
+    [[input.files]]
+    title = "InverseDeformationGradientTensor!"
+    contents = "InverseDeformationGradientTensor!"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.InverseDeformationGradientTensor!"
+    [[input.files]]
+    title = "predict"
+    contents = "predict(ψ::AbstractMaterialModel, test::AbstractMaterialTest, ps)\nFields:\nψ: Material Model\n\ntest or tests: A single test or vector of tests. This is used to predict the response of the model in comparison to the experimental data provided.\n\nps: Model parameters to be used.\n\n\n\n"
+    url = "NonlinearContinua@dev/ref/NonlinearContinua.predict"
