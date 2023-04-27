@@ -1,7 +1,7 @@
 module NonlinearContinua
 
 using LinearAlgebra
-using Accessors
+using RecursiveArrayTools
 
 abstract type AbstractMaterialModel end
 abstract type AbstractMaterialState end
@@ -23,8 +23,8 @@ Fields:
 function predict(ψ::AbstractMaterialModel, test::AbstractMaterialTest, ps)
     @error "Method not implemented for model $(typeof(ψ)) and test $(typeof(test))"
 end
-function predict(ψ::AbstractMaterialModel, tests::Vector{<:AbstractMaterialTest}, ps)
-    f(test) = predict(ψ, test, ps)
+function predict(ψ::AbstractMaterialModel, tests::Vector{<:AbstractMaterialTest}, ps, args...)
+    f(test) = predict(ψ, test, ps,args...)
     results = map(f, tests)
     return results
 end
@@ -35,37 +35,47 @@ end
 Structure for storing the behavior of a material as it evolves in time. Design to be used in time-dependent models such as viscoelasticity.
 
 """
-struct MaterialHistory{T,S} <: AbstractMaterialState
-    value::Vector{T}
-    time::Vector{S}
-    function MaterialHistory(values::Vector, times::Vector)
-        new{eltype(values),eltype(times)}(values, times)
+struct MaterialHistory{T} <: AbstractMaterialState
+    value::VectorOfArray
+    time::Vector{T}
+    function MaterialHistory(value::Vector, time::T) where { T}
+        new{T}(VectorOfArray([value]), [time])
+    end
+    function MaterialHistory(value::Matrix, time::T) where {T}
+        new{T}(VectorOfArray([value]), [time])
     end
 end
-value(history::MaterialHistory) = history.value
-time(history::MaterialHistory) = history.time
+# struct MaterialHistory{T,S} <: AbstractMaterialState
+#     value::Vector{T}
+#     time::Vector{S}
+#     function MaterialHistory(values::Vector, times::Vector)
+#         new{eltype(values),eltype(times)}(values, times)
+#     end
+# end
+# value(history::MaterialHistory) = history.value
+# time(history::MaterialHistory) = history.time
 
-"""
-`update_history!(history::MaterialHistory, value, time)`
+# """
+# `update_history!(history::MaterialHistory, value, time)`
 
-Update the material history with the provided time an value.
-"""
-function update_history!(history::MaterialHistory, value, time)
-    push!(history.value, value)
-    push!(history.time, time)
-    return nothing
-end
+# Update the material history with the provided time an value.
+# """
+# function update_history!(history::MaterialHistory, value, time)
+#     push!(history.value, value)
+#     push!(history.time, time)
+#     return nothing
+# end
 
-"""
-`update_history(history::MaterialHistory, value, time)`
+# """
+# `update_history(history::MaterialHistory, value, time)`
 
-Update the material history with the provided time an value.
-"""
-function update_history(history::MaterialHistory, value, time)
-    history = @set history.value = vcat(history.value, [value])
-    history = @set history.time = vcat(history.time, [time])
-    return history
-end
+# Update the material history with the provided time an value.
+# """
+# function update_history(history::MaterialHistory, value, time)
+#     history = @set history.value = vcat(history.value, [value])
+#     history = @set history.time = vcat(history.time, [time])
+#     return history
+# end
 
 ## Energy Models
 for Model ∈ [
