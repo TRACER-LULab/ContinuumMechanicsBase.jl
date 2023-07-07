@@ -20,11 +20,11 @@ Fields:
 - `test` or `tests`: A single test or vector of tests. This is used to predict the response of the model in comparison to the experimental data provided.
 - `ps`: Model parameters to be used.
 """
-function predict(ψ::AbstractMaterialModel, test::AbstractMaterialTest, ps)
+function predict(ψ::AbstractMaterialModel, test::AbstractMaterialTest, ps; kwargs...)
     @error "Method not implemented for model $(typeof(ψ)) and test $(typeof(test))"
 end
-function predict(ψ::AbstractMaterialModel, tests::Vector{<:AbstractMaterialTest}, ps, args...)
-    f(test) = predict(ψ, test, ps,args...)
+function predict(ψ::AbstractMaterialModel, tests::Vector{<:AbstractMaterialTest}, ps; kwargs...)
+    f(test) = predict(ψ, test, ps; kwargs...)
     results = map(f, tests)
     return results
 end
@@ -45,37 +45,6 @@ struct MaterialHistory{T} <: AbstractMaterialState
         new{T}(VectorOfArray([value]), [time])
     end
 end
-# struct MaterialHistory{T,S} <: AbstractMaterialState
-#     value::Vector{T}
-#     time::Vector{S}
-#     function MaterialHistory(values::Vector, times::Vector)
-#         new{eltype(values),eltype(times)}(values, times)
-#     end
-# end
-# value(history::MaterialHistory) = history.value
-# time(history::MaterialHistory) = history.time
-
-# """
-# `update_history!(history::MaterialHistory, value, time)`
-
-# Update the material history with the provided time an value.
-# """
-# function update_history!(history::MaterialHistory, value, time)
-#     push!(history.value, value)
-#     push!(history.time, time)
-#     return nothing
-# end
-
-# """
-# `update_history(history::MaterialHistory, value, time)`
-
-# Update the material history with the provided time an value.
-# """
-# function update_history(history::MaterialHistory, value, time)
-#     history = @set history.value = vcat(history.value, [value])
-#     history = @set history.time = vcat(history.time, [time])
-#     return history
-# end
 
 ## Energy Models
 for Model ∈ [
@@ -83,7 +52,7 @@ for Model ∈ [
     :StrainEnergyDensity!,
 ]
     @eval export $Model
-    @eval @inline function $Model(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
+    @eval @inline function $Model(M::AbstractMaterialModel, S, P; kwargs...) end
 end
 ## Stress Tensors
 for Tensor ∈ [
@@ -95,7 +64,7 @@ for Tensor ∈ [
     :CauchyStressTensor!,
 ]
     @eval export $Tensor
-    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
+    @eval @inline function $Tensor(M::AbstractMaterialModel, S, P, ;kwargs...) end
 end
 
 ## Deformation Tensors
@@ -112,7 +81,7 @@ for Tensor ∈ [
     :InverseLeftCauchyGreenDeformationTensor!,
 ]
     @eval export $Tensor
-    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
+    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P;kwargs...) end
 end
 
 
@@ -124,7 +93,7 @@ for Tensor ∈ [
     :AlmansiStrainTensor!,
 ]
     @eval export $Tensor
-    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
+    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P;kwargs...) end
 end
 
 ## Time Dependent Tensors
@@ -134,7 +103,7 @@ for Tensor ∈ [
     :VelocityGradientTensor!,
 ]
     @eval export $Tensor
-    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P) end
+    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P; kwargs...) end
 end
 
 ## Electric Field Tensors
