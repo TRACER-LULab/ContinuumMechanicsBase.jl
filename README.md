@@ -1,3 +1,3 @@
-# NonlinearContinua
+# ContinuumMechanicsBase
 
-`NonlinearContinua.jl` is the core interface for the definitions used in the TRACER Lab Continuum Model. This module defines a core interface between different energy domains and methods. The aim is to provide a standard interface for predicting material behavior.  
+`ContinuumMechanicsBase.jl` is the core interface for the definitions of quantities in Continuum Mechanics. The aim of the package is to have a standardized interface for developing various linear and nonlinear material models within a single framework.
