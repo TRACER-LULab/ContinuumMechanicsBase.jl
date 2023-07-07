@@ -1,8 +1,8 @@
 using Pollen, ModuleInfo, Pkg
 
 # The main package you are documenting
-using NonlinearContinua
-m = NonlinearContinua
+using ContinuumMechanicsBase
+m = ContinuumMechanicsBase
 
 
 # Packages that will be indexed in the documentation. Add additional modules

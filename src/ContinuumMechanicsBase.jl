@@ -1,4 +1,4 @@
-module NonlinearContinua
+module ContinuumMechanicsBase
 
 using LinearAlgebra
 using RecursiveArrayTools

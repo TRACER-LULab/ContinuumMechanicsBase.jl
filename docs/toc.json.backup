@@ -1,8 +1,8 @@
 {
     "README": "/doc/README.md",
     "Reference": {
-        "Module": "/ref/NonlinearContinua",
-        "Hyperelastics": "/ref/NonlinearContinua/Hyperelastics",
-        "Viscoelastics": "/ref/NOnlinearContinua/Viscoelastics"
+        "Module": "/ref/ContinuumMechanicsBase",
+        "Hyperelastics": "/ref/ContinuumMechanicsBase/Hyperelastics",
+        "Viscoelastics": "/ref/ContinuumMechanicsBase/Viscoelastics"
     }
 }
