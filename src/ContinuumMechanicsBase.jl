@@ -23,6 +23,7 @@ Fields:
 function predict(ψ::AbstractMaterialModel, test::AbstractMaterialTest, ps; kwargs...)
     @error "Method not implemented for model $(typeof(ψ)) and test $(typeof(test))"
 end
+
 function predict(ψ::AbstractMaterialModel, tests::Vector{<:AbstractMaterialTest}, ps; kwargs...)
     f(test) = predict(ψ, test, ps; kwargs...)
     results = map(f, tests)
