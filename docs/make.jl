@@ -1,15 +1,10 @@
 using ContinuumMechanicsBase
 using Documenter
-using DocumenterCitations
 
-bib = CitationBibliography(
-    joinpath(@__DIR__, "src", "refs.bib");
-    style=:numeric
-)
 
 DocMeta.setdocmeta!(ContinuumMechanicsBase, :DocTestSetup, :(using InverseLangevinApproximations); recursive=true)
 
-makedocs(bib;
+makedocs(;
     modules=[ContinuumMechanicsBase],
     authors="Carson Farmer <59753859+cfarm6@users.noreply.github.com> and contributors",
     repo="https://github.com/cfarm6/ContinuumMechanicsBase.jl/blob/{commit}{path}#{line}",
