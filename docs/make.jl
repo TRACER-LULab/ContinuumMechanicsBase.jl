@@ -1,30 +1,31 @@
-"""
-This script builds the Pollen.jl documentation so that it can be loaded
-by the frontend. It accepts one argument: the path where the generated
-files should be stored.
+using ContinuumMechanicsBase
+using Documenter
+using DocumenterCitations
 
-    > julia docs/make.jl DIR TAG
+bib = CitationBibliography(
+    joinpath(@__DIR__, "src", "refs.bib");
+    style=:numeric
+)
 
-Use `./serve.jl` for interactive development.
-"""
+DocMeta.setdocmeta!(ContinuumMechanicsBase, :DocTestSetup, :(using InverseLangevinApproximations); recursive=true)
 
-# Create target folder
-length(ARGS) != 2 && error("Please pass a file path and a version tag to make.jl:\n\t> julia docs/make.jl \$DIR \$TAG ")
-DIR = abspath(mkpath(ARGS[1]))
-TAG = ARGS[2]
-
-# Create Project
-createproject = include("project.jl")
-project = createproject(tag = TAG)
-
-@info "Rewriting documents..."
-Pollen.rewritesources!(project)
-
-@info "Writing to disk at \"$DIR\"..."
-Pollen.build(
-    FileBuilder(
-        JSONFormat(),
-        DIR,
+makedocs(bib;
+    modules=[ContinuumMechanicsBase],
+    authors="Carson Farmer <59753859+cfarm6@users.noreply.github.com> and contributors",
+    repo="https://github.com/cfarm6/ContinuumMechanicsBase.jl/blob/{commit}{path}#{line}",
+    sitename="ContinuumMechanicsBase.jl",
+    format=Documenter.HTML(;
+        prettyurls=get(ENV, "CI", "false") == "true",
+        canonical="https://cfarm6.github.io/ContinuumMechanicsBase.jl",
+        edit_link="main",
+        assets=String[],
     ),
-    project,
+    pages=[
+        "Home" => "index.md",
+    ],
+)
+
+deploydocs(;
+    repo="github.com/cfarm6/ContinuumMechanicsBase.jl",
+    devbranch="main",
 )
