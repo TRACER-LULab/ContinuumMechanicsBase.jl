@@ -2,7 +2,7 @@ using ContinuumMechanicsBase
 using Documenter
 
 
-DocMeta.setdocmeta!(ContinuumMechanicsBase, :DocTestSetup, :(using InverseLangevinApproximations); recursive=true)
+DocMeta.setdocmeta!(ContinuumMechanicsBase, :DocTestSetup, :(using ContinuumMechanicsBase); recursive=true)
 
 makedocs(;
     modules=[ContinuumMechanicsBase],
