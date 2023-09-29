@@ -2,6 +2,7 @@ module ContinuumMechanicsBase
 
 using LinearAlgebra
 using RecursiveArrayTools
+using DocStringExtensions
 
 abstract type AbstractMaterialModel end
 abstract type AbstractMaterialState end
@@ -13,7 +14,7 @@ export predict
 
 ## Material Tests
 """
-`predict(ψ::AbstractMaterialModel, test::AbstractMaterialTest, ps)`
+$(TYPEDSIGNATURES)
 
 Fields:
 - `ψ`: Material Model
@@ -31,7 +32,7 @@ function predict(ψ::AbstractMaterialModel, tests::Vector{<:AbstractMaterialTest
 end
 
 """
-`MaterialHistory(values::Vector, times::Vector)`
+$(TYPEDSIGNATURES)
 
 Structure for storing the behavior of a material as it evolves in time. Design to be used in time-dependent models such as viscoelasticity.
 
@@ -52,8 +53,13 @@ for Model ∈ [
     :StrainEnergyDensity,
     :StrainEnergyDensity!,
 ]
-    @eval export $Model
-    @eval @inline function $Model(M::AbstractMaterialModel, S, P; kwargs...) end
+    name = string(Model)
+    @eval begin
+        export $Model
+        @doc """$($(name))(Model, State, Parameters; kwargs...)
+        """
+        $Model(M::AbstractMaterialModel, S, P; kwargs...) = nothing
+    end
 end
 ## Stress Tensors
 for Tensor ∈ [
@@ -64,10 +70,14 @@ for Tensor ∈ [
     :SecondPiolaKirchoffStressTensor!,
     :CauchyStressTensor!,
 ]
-    @eval export $Tensor
-    @eval @inline function $Tensor(M::AbstractMaterialModel, S, P, ;kwargs...) end
+    name = string(Tensor)
+    @eval begin
+        export $Tensor
+        @doc """$($(name))(Model, State, Parameters; kwargs...)
+        """
+        $Tensor(M::AbstractMaterialModel, S, P; kwargs...) = nothing
+    end
 end
-
 ## Deformation Tensors
 for Tensor ∈ [
     :DeformationGradientTensor,
@@ -81,8 +91,13 @@ for Tensor ∈ [
     :LeftCauchyGreenDeformationTensor!,
     :InverseLeftCauchyGreenDeformationTensor!,
 ]
-    @eval export $Tensor
-    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P;kwargs...) end
+    name = string(Tensor)
+    @eval begin
+        export $Tensor
+        @doc """$($(name))(Model, State, Parameters; kwargs...)
+        """
+        $Tensor(M::AbstractMaterialModel, S, P; kwargs...) = nothing
+    end
 end
 
 
@@ -93,8 +108,13 @@ for Tensor ∈ [
     :GreenStrainTensor!,
     :AlmansiStrainTensor!,
 ]
-    @eval export $Tensor
-    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P;kwargs...) end
+    name = string(Tensor)
+    @eval begin
+        export $Tensor
+        @doc """$($(name))(Model, State, Parameters; kwargs...)
+        """
+        $Tensor(M::AbstractMaterialModel, S, P; kwargs...) = nothing
+    end
 end
 
 ## Time Dependent Tensors
@@ -103,8 +123,13 @@ for Tensor ∈ [
     :VelocityGradientTensor,
     :VelocityGradientTensor!,
 ]
-    @eval export $Tensor
-    @eval @inline function $Tensor(M::AbstractMaterialModel, S::AbstractMaterialState, P; kwargs...) end
+    name = string(Tensor)
+    @eval begin
+        export $Tensor
+        @doc """$($(name))(Model, State, Parameters; kwargs...)
+        """
+        $Tensor(M::AbstractMaterialModel, S, P; kwargs...) = nothing
+    end
 end
 
 ## Electric Field Tensors
@@ -112,9 +137,27 @@ end
 ## Charge Displacement Tensors
 
 ## Tensor Invariant Calculations
+"""
+$(TYPEDSIGNATURES)
+
+``I_1 = \\text{tr}(T)``
+"""
 I₁(T::AbstractMatrix) = tr(T)
+"""
+$(TYPEDSIGNATURES)
+
+``I_2 = \\frac{1}{2}\\left(\\text{tr}(T)^2 - \\text{tr}(T^2)\\right)``
+"""
 I₂(T::AbstractMatrix) = 1 / 2 * (tr(T)^2 - tr(T^2))
+"""
+$(TYPEDSIGNATURES)
+
+``I_3 = \\det{T}``
+"""
 I₃(T::AbstractMatrix) = det(T)
+"""
+$(TYPEDSIGNATURES)
+"""
 J(T::AbstractMatrix) = sqrt(det(T))
 
 end
