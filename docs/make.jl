@@ -21,6 +21,6 @@ makedocs(;
 )
 
 deploydocs(;
-    repo="github.com/cfarm6/ContinuumMechanicsBase.jl",
+    repo="github.com/TRACER-LULab/ContinuumMechanicsBase.jl",
     devbranch="main",
 )
