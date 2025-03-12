@@ -5,7 +5,7 @@ using ContinuumMechanicsBase
 using DocStringExtensions
 using Optimization
 
-export parameters, parameter_bounds
+export parameters, parameter_bounds, MaterialOptimizationProblem
 
 
 """
