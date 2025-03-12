@@ -13,7 +13,9 @@ $(TYPEDSIGNATURES)
 
 Empty function call of model parameters tuple for optimization.
 """
-function parameters(::M) where {M<:ContinuumMechanicsBase.AbstractMaterialModel} end
+function parameters(::M) where {M<:ContinuumMechanicsBase.AbstractMaterialModel}
+    @error "Method not implemented for model $M."
+end
 
 """
 $(TYPEDSIGNATURES)
