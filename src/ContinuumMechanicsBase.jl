@@ -160,4 +160,16 @@ $(TYPEDSIGNATURES)
 """
 J(T::AbstractMatrix) = sqrt(det(T))
 
+
+## Material Optimization
+ext = Base.get_extension(@__MODULE__, :OptimizationContinuumMechanicsBaseExt)
+if !isnothing(ext)
+    export parameters, parameter_bounds, MaterialOptimizationProblem
+    parameters = ext.parameters
+    parameter_bounds = ext.parameter_bounds
+    MaterialOptimizationProblem = ext.MaterialOptimizationProblem
 end
+
+
+
+end # end of module
