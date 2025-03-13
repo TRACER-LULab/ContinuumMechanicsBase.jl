@@ -1,7 +1,7 @@
 name = "ContinuumMechanicsBase"
 uuid = "3a778109-d974-46c8-ac54-09f30d605bdf"
 authors = ["Carson Farmer and Hector Medina"]
-version = "0.1.1"
+version = "0.2.1"
 
 [deps]
 DocStringExtensions = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
@@ -11,7 +11,7 @@ RecursiveArrayTools = "731186ca-8d62-57ce-b412-fbd966d074cd"
 [compat]
 DocStringExtensions = "0.9"
 RecursiveArrayTools = "3"
-julia = "1"
+julia = "1.10"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
