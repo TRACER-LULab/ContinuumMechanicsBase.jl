@@ -1,7 +1,7 @@
 name = "ContinuumMechanicsBase"
 uuid = "3a778109-d974-46c8-ac54-09f30d605bdf"
 authors = ["Carson Farmer and Hector Medina"]
-version = "0.2.1"
+version = "0.2.2"
 
 [deps]
 DocStringExtensions = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
